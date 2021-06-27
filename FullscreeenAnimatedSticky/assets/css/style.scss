@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700;800&display=swap');
+$main-font:'Open Sans', sans-serif;
+
+*,*::before,*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: $main-font;
+    font-weight: 400;
+    
+}
+::-webkit-scrollbar{
+    width: 0;
+}
+body{
+    min-height: 1000px;
+    background: #202020;
+    header{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        transition: 1s linear;
+        .banner{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            object-fit: cover;
+            transition: 1s;
+        }
+        .logo{
+            padding: 2px 20px;
+            font-size: 6em;
+            font-weight: 700;
+            letter-spacing: 4px;
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            color: #202020;
+            border: none;
+            background: rgba(250, 250, 250, 0.25);
+            backdrop-filter: blur(25px);
+            transform: translate(-50%, -55%);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            z-index: 1;
+            outline: none;
+            transition: 1s linear;
+        }
+        nav{
+            position: relative;
+            display: flex;
+            z-index: 1000;
+            ul{
+                display: flex;
+                align-items: flex-start;
+                list-style: none;
+                transition: 0.25s;
+                transform: translateX(100px);
+                opacity: 0;
+                li{
+                    margin: 8px;
+                    padding: 4px 8px;
+                    transition: .2s linear;
+                    a{
+                        display: inline-block;
+                        color: #e5e5e5;
+                        text-decoration: none;
+                        transition: .2s linear;
+                        font-size: 1.2em;
+                    }
+                }
+                .active{
+                    background: #e5e5e5;
+                    a{
+                        color: #202020;   
+                        transition: .2s linear;
+                    }
+                }
+                li:hover{
+                    background: #e5e5e5;
+                    transition-delay: .2s linear;
+                    a{
+                        color: #202020;   
+                        transition: .2s linear;
+                    }
+                }
+            }
+        }
+    }
+    .sticky{
+        height: 8vh;
+        min-height: 40px;
+        transition: 1s linear;
+        .banner{
+            opacity: 0.55;
+        }
+        .logo{
+            font-size: 1.5em;
+            left: 10%;
+            transform: translate(-10%, -50%);
+            transition: 1s linear;
+        }
+        nav{
+            ul{
+                opacity: 1;
+                transform: translateX(-10px);
+                transition: 1s ease-in;
+            }
+        }
+    }
+    section{
+        margin: 500px 80px 0;
+        h2{
+            font-size: 3em;
+            font-weight: 700;
+            color: #e5e5e5;
+            margin-bottom: 20px;
+        }
+        p{
+            text-indent: 10px;
+            font-size: 1.1em;
+            line-height: 2em;
+            color: #e5e5e5;
+        }
+    }
+}
+
+@media (max-width:991px) {
+    body{
+        header{
+            .navigation{
+                display: none;
+            }
+            .activeNav{
+                display: flex;
+                place-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                margin: 0 -10px;
+                .navigation{
+                    display: flex;
+                    margin: 0 20px;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: flex-start;
+                    width: 100vw;
+                    height: 100vh;
+                    background: rgba(250, 250, 250, 0.25);
+                    backdrop-filter: blur(25px);
+                    position: absolute;
+                    top: 100%;
+                }
+            }
+            .toggle{
+                position: relative;
+                margin-top: 6px;
+                width: 30px;
+                height: 3px;
+                right: 30px;
+                opacity: 0;
+                background: #e5e5e5;
+                transition: 1s linear;
+                cursor: pointer;
+                transition: 0.25s linear;
+                z-index: 100000;
+            }
+            .toggle::before{
+                content: '';
+                position: absolute;
+                width: 30px;
+                height: 3px;
+                margin: 8px 0 0;
+                background: #e5e5e5;
+                transition: 1s linear;
+                cursor: pointer;
+                transition: 0.25s linear;
+            }
+            .toggle::after{
+                content: '';
+                position: absolute;
+                width: 30px;
+                height: 3px;
+                margin: -8px 0 0;
+                background: #e5e5e5;
+                transition: 1s linear;
+                cursor: pointer;
+                transition: 0.25s linear;
+            }
+            
+        }
+        .sticky{
+            .toggle{
+                opacity: 1;
+                transition: 0.25s linear;
+            }
+            .active{
+                background: rgba(250, 250, 250, 0);
+                transition: 0.25s linear;
+            }
+            .active::after{
+                margin: 0;
+                transform: rotate(-45deg);
+                transition: 0.25s linear;
+            }
+            .active::before{
+                margin: 0;
+                transform: rotate(45deg);
+                transition: 0.25s linear;
+            }
+        }
+        section{
+            margin: 80% 10px 0;
+            h2{
+                font-size: 1em;
+            }
+            p{
+                font-size: .8em;
+                line-height: 1.2em;
+                text-indent: 10px;
+            }
+        }
+    }
+}
